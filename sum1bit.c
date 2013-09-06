@@ -18,7 +18,7 @@
  */
 void sum_1bit( quantum_reg * reg, int s1_bit, int s2_bit, int p_bit, int zero_bit )
 {
-	quantum_sigma_x( p_bit, reg);
+	quantum_sigma_x( p_bit, reg); /* sigmaX i.e. NOT */
 	quantum_unbounded_toffoli( 3, reg, s1_bit, s2_bit, p_bit, zero_bit );
 	quantum_sigma_x( p_bit, reg);
 	quantum_sigma_x( s2_bit, reg);
@@ -39,20 +39,19 @@ int main()
 
 	srand( time( 0 ) );
 
-	reg = quantum_new_qureg( 0x8/* initval */, 4/* qubits */ );
+	reg = quantum_new_qureg( 0xe/* initval */, 4/* qubits */ );
 	quantum_print_qureg( reg );
 
 	//quantum_hadamard( 0/* qbit */, &reg );
-	//quantum_hadamard( 2/* qbit */, &reg );
-	//quantum_hadamard( 1/* qbit */, &reg );
-	//quantum_hadamard( 2/* qbit */, &reg );
-	//quantum_hadamard( 3/* qbit */, &reg );
-	//printf( "Сделали quantum_hadamard по 0\n" );
-	//quantum_print_qureg( reg );
+	quantum_hadamard( 1/* qbit */, &reg );
+	quantum_hadamard( 2/* qbit */, &reg );
+	quantum_hadamard( 3/* qbit */, &reg );
+	printf( "Сделали quantum_hadamard по вводам\n" );
+	quantum_print_qureg( reg );
 
 
 
-	sum_1bit( reg, 3, 2, 1, 0 )
+	sum_1bit( &reg, 3, 2, 1, 0 );
 	printf( "Сделали sum\n" );
 	quantum_print_qureg( reg );
 
