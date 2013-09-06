@@ -99,7 +99,7 @@ int main()
 	{
 		quantum_hadamard( zero_bits[i], &reg );
 	}
-	printf( "Сделали quantum_hadamard по вводам\n" );
+	printf( "Сделали quantum_hadamard по zero_bits\n" );
 	quantum_print_qureg( reg );
 
 	printf( "Сделали sum_8bit_r" );
@@ -109,6 +109,14 @@ int main()
 	//printf( "Сделали sum_8bit" );
 	//sum_8bit( &reg, s1, s2, 24/* carry bit */, zero_bits );
 	//quantum_print_qureg( reg );
+
+	//for( i = 0; i < 8; i++ )
+	//{
+	//	quantum_hadamard( zero_bits[i], &reg );
+	//}
+	//printf( "Сделали quantum_hadamard по zero_bits\n" );
+	//quantum_print_qureg( reg );
+
 
 	result = quantum_measure( reg );
 	printf( "Измерили и получили: 0x%08x\n", result );
